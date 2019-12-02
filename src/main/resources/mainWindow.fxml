@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Category:">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin></Label>
+            <Group fx:id="cbCategoryGroup">
+               <children>
+                  <CheckBox fx:id="cbSelectAll" mnemonicParsing="false" onAction="#selectAllCat" text="Select All">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></CheckBox>
+                  <CheckBox fx:id="cbPB" layoutY="17.0" mnemonicParsing="false" text="PB">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></CheckBox>
+                  <CheckBox fx:id="cbAA" layoutY="34.0" mnemonicParsing="false" text="AA">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></CheckBox>
+                  <CheckBox fx:id="cbFB" layoutY="51.0" mnemonicParsing="false" text="FB">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding></CheckBox>
+               </children>
+            </Group>
+            <Label text="Language:">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+            <CheckBox fx:id="cbSRB" mnemonicParsing="false" text="SRB">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbEN" mnemonicParsing="false" text="EN">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="cbDE" mnemonicParsing="false" text="DE">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </CheckBox>
+            <BorderPane minWidth="120.0" prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="From:" />
+                        <DatePicker fx:id="dpFrom" />
+                        <Label text="To:" />
+                        <DatePicker fx:id="dpTo" />
+                     </children>
+                     <BorderPane.margin>
+                        <Insets top="10.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </top>
+               <center>
+                  <Button fx:id="btnUpdateFilter" mnemonicParsing="false" onAction="#tableRefresh" text="Update filter" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="20.0" />
+                     </BorderPane.margin></Button>
+               </center>
+            </BorderPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem fx:id="miNewDocument" mnemonicParsing="false" onAction="#newDocument" text="New Document" />
+                          <MenuItem fx:id="miCloseApp" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <TextField fx:id="searchField" promptText="Search">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin></TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <TableView fx:id="table" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="col_firstName" minWidth="150.0" prefWidth="-1.0" text="Document number:" />
+                <TableColumn fx:id="col_lastName" prefWidth="150.0" text="Document name:" />
+                  <TableColumn fx:id="colRevision" prefWidth="75.0" text="Revision:" />
+                  <TableColumn fx:id="colCategory" prefWidth="75.0" text="Category" />
+                  <TableColumn fx:id="colReleasedOn" prefWidth="75.0" text="Released on:" />
+                  <TableColumn fx:id="colDepartments" prefWidth="75.0" text="Departments" />
+                  <TableColumn fx:id="colLanguage" prefWidth="75.0" text="Language" />
+                  <TableColumn fx:id="colOpen" prefWidth="75.0" text="File open" />
+                  <TableColumn fx:id="colEditBtn" prefWidth="75.0" text="Edit" />
+              </columns>
+            </TableView>
+         </children>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <bottom>
+      <Label text="Label" BorderPane.alignment="CENTER_RIGHT" />
+   </bottom>
+</BorderPane>
